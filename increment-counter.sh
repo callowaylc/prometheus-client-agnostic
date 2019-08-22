@@ -19,6 +19,7 @@ echo
 
 # increment the counter by writing to $FD
 echo >&${FD}
+sleep .1
 
 # get counter value and write to stdout/http response body
 curl -s $metrichost/metrics \

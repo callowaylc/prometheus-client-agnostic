@@ -28,12 +28,11 @@ realpath *.sh | xargs -I{} ln -sf {} ${WBDR}/cgi-bin
 
 # start http server
 (
-  httpd \
+  ./client_agnostic.sh httpd \
     -f \
     -v \
     -p 8080 \
     -h $WBDR
-) >/tmp/http.log &
+) >/tmp/http.log 3>&2 &
 
-# execute argument
 eval "$@"
