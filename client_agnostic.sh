@@ -31,7 +31,6 @@ eval "exec ${FD}<>${ch}"
 ) <&${FD} &
 
 eval "$@"
-wait
 
 # close fd
 eval "exec ${FD}&-"

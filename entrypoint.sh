@@ -8,7 +8,7 @@ set -euo pipefail
 pip install -r requirements.txt
 
 # add system packages
-apk add jq
+apk add jq curl
 
 # execute argument
 eval "$@"
