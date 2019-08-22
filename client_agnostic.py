@@ -11,7 +11,7 @@ from logger import debug, info, warn, error
 
 ## constants ####################################
 
-PORT = 8080
+PORT = 80
 EXIT_STATUS_ERROR = 3
 
 ## main #########################################

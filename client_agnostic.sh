@@ -10,11 +10,15 @@ set -euo pipefail
 export WORKDIR=${WORKDIR:-/opt/bin}
 export FD=${FD:-6}
 
+arguments=${@:-"sh -l"}
+
 ## properties ###################################
 
 ch=`mktemp -u`
 
 ## main #########################################
+
+logger -pdebug -s "Enter"
 
 trap "kill -- -$$" EXIT
 
@@ -26,6 +30,7 @@ eval "exec ${FD}<>${ch}"
 
 # start metrics interpreter - reap parent on exit
 (
+  trap "kill -- -$$" EXIT
   $WORKDIR/client_agnostic.py
 
 ) <&${FD} &
@@ -35,3 +40,4 @@ eval "$@"
 # close fd
 eval "exec ${FD}&-"
 
+logger -pdebug -s "Exit"

@@ -1,6 +1,6 @@
 export SHELL=/bin/sh
 export VERSION ?= 3.7-alpine
-export PORT ?= 8080
+export PORT ?= 80
 ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 ARGS := $(or $(ARGS),test)
 FLTR := $(firstword $(ARGS))
